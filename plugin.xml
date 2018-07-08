@@ -10,7 +10,7 @@
 	<author>Rolamix</author>
 
 	<engines>
-    <engine name="cordova" version=">=7.1.0"/>
+    <engine name="cordova" version=">=7.0.0"/>
     <engine name="cordova-android" version=">=7.1.0"/>
     <engine name="cordova-ios" version=">=4.5.0"/>
     <engine name="cordova-ubuntu" version=">=4.3.4"/>
