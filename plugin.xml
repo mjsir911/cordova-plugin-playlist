@@ -13,6 +13,7 @@
     <engine name="cordova" version=">=7.1.0"/>
     <engine name="cordova-android" version=">=7.1.0"/>
     <engine name="cordova-ios" version=">=4.5.0"/>
+    <engine name="cordova-ubuntu" version=">=4.3.4"/>
 	</engines>
 
 	<js-module src="www/RmxAudioPlayer.js" name="AudioPlayer">
@@ -89,6 +90,12 @@
     <source-file src="src/android/java/RmxAudioErrorType.java" target-dir="src/com/rolamix/plugins/audioplayer/" />
     <source-file src="src/android/java/RmxAudioStatusMessage.java" target-dir="src/com/rolamix/plugins/audioplayer/" />
     <source-file src="src/android/java/TrackRemovalItem.java" target-dir="src/com/rolamix/plugins/audioplayer/" />
+	</platform>
+
+	<!-- ubuntu -->
+	<platform name="ubuntu">
+			<header-file src="src/ubuntu/playlist.h" />
+			<source-file src="src/ubuntu/playlist.cpp" />
 	</platform>
 
 	<!-- ios -->
