@@ -18,6 +18,7 @@
     "id": "cordova-plugin-playlist",
     "platforms": [
       "android",
+      "ubuntu",
       "ios"
     ]
   },
