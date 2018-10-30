@@ -52,6 +52,11 @@ int setPlaylistItems(int scId, int ecId, const QJSValue &);
 int addItem(int scId, int ecId, const AudioTrack &item);
 
 /**
+ * Adds the list of tracks to the end of the playlist.
+ */
+int addAllItems(int scId, int ecId, const QJSValue &);
+
+/**
  * Begin playback. If no tracks have been added, this has no effect.
  */
 void play(int scId, int ecId);

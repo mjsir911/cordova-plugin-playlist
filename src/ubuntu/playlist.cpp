@@ -32,11 +32,8 @@ int RmxAudioPlayer::setPlaylistItems(int scId, int ecId, const QJSValue &items_t
 		return -1;
 	}
 
-	for (const AudioTrack &item : items_tmp.toVariant().toList()) {
-		if (!this->addItem(scId, ecId, item)) {
-			return -1
-		}
-	}
+	return this->addAllItems(scId, ecId, items_tmp);
+
 }
 
 int RmxAudioPlayer::addItem(int scId, int ecId, const AudioTrack &track) {
@@ -46,4 +43,12 @@ int RmxAudioPlayer::addItem(int scId, int ecId, const AudioTrack &track) {
 	}
 
 	this->cb(scId, track.assetUrl);
+}
+
+int addAllItems(int scId, int ecId, const QJSValue &tracks) {
+	for (const AudioTrack &track : tracks.toVariant().toList()) {
+		if (!this->addItem(scId, ecId, track)) {
+			return -1
+		}
+	}
 }
