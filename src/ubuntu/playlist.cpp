@@ -26,30 +26,24 @@ void RmxAudioPlayer::seekTo(int scId, int ecId, qint64 position) {
 	m_player.setPosition(position);
 }
 
-void RmxAudioPlayer::setPlaylistItems(int scId, int ecId, const QJSValue &items_tmp) {
-	try {
-
+int RmxAudioPlayer::setPlaylistItems(int scId, int ecId, const QJSValue &items_tmp) {
 	if (!m_playlist.clear()) {
-		throw m_playlist.errorString();
+		this->cb(ecId, m_playlist.errorString());
+		return -1;
 	}
 
 	for (const AudioTrack &item : items_tmp.toVariant().toList()) {
-		this->addItem(scId, ecId, item);
-	}
-
-	} catch (const QString &err) {
-		this->cb(ecId, err);
+		if (!this->addItem(scId, ecId, item)) {
+			return -1
+		}
 	}
 }
 
-void RmxAudioPlayer::addItem(int scId, int ecId, const AudioTrack &track) {
-	try {
-
+int RmxAudioPlayer::addItem(int scId, int ecId, const AudioTrack &track) {
 	if (!m_playlist.addMedia(track.assetUrl)) {
-		throw m_playlist.errorString();
+		this->cb(ecId, m_playlist.errorString());
+		return -1
 	}
 
-	} catch (const QString &err) {
-		this->cb(ecId, err);
-	}
+	this->cb(scId, track.assetUrl);
 }

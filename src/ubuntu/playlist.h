@@ -44,12 +44,12 @@ void seekTo(int scId, int ecId, qint64 position);
  * recorded and used when playback restarts. This can be used, for example, to set the
  * playlist to a new set of tracks, but retain the currently-playing item to avoid skipping.
  */
-void setPlaylistItems(int scId, int ecId, const QJSValue &);
+int setPlaylistItems(int scId, int ecId, const QJSValue &);
 
 /**
  * Add a single track to the end of the playlist
  */
-void addItem(int scId, int ecId, const AudioTrack &item);
+int addItem(int scId, int ecId, const AudioTrack &item);
 
 /**
  * Begin playback. If no tracks have been added, this has no effect.
