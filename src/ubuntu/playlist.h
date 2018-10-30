@@ -4,6 +4,8 @@
 #include <cordova.h>
 #include "AudioTrack.h"
 
+#include <QJSValue>
+
 //class RmxAudioPlayerItem;
 
 //typedef QMap<QString, QVariant> AudioTrack;
@@ -23,17 +25,17 @@ public:
 	}
 
 public slots:
-	//void create(int scId, int ecId, const QString &id);
 
-// translation functions
-//void getPosition(int scId, int ecId, const QString &id);
-//void on(int scId, int ecId, const QString &id, QString &eventName, int OnStatusCallbackId);
+/**
+ * Clear the entire playlist. This will result in the STOPPED event being raised.
+ */
+void clearAllItems(int, int);
 
 /**
  * Seek to the given position in the currently playing track. If the value exceeds the track length,
  * the track will complete and playback of the next track will begin.
  */
-void seekTo(int scId, int ecId, int position);
+void seekTo(int scId, int ecId, qint64 position);
 
 /**
  * Sets the entire list of tracks to be played by the playlist.
@@ -42,12 +44,12 @@ void seekTo(int scId, int ecId, int position);
  * recorded and used when playback restarts. This can be used, for example, to set the
  * playlist to a new set of tracks, but retain the currently-playing item to avoid skipping.
  */
-void setPlaylistItems(int scId, int ecId, const QList<QVariantMap> &);
+void setPlaylistItems(int scId, int ecId, const QJSValue &);
 
 /**
  * Add a single track to the end of the playlist
  */
-void addItem(int scId, int ecId, const QVariantMap &item);
+void addItem(int scId, int ecId, const AudioTrack &item);
 
 /**
  * Begin playback. If no tracks have been added, this has no effect.

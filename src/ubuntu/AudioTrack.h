@@ -47,7 +47,7 @@ struct AudioTrack {
 
 
 
-	AudioTrack (const QVariantMap& item): isStream(item.value("isStream").toBool())
+	AudioTrack (const QVariantMap &item): isStream(item.value("isStream").toBool())
 	                                    , trackId( item.value("trackId" ).toString())
 	                                    , assetUrl(item.value("assetUrl").toString())
 	                                    , albumArt(item.value("albumArt").toString())
@@ -55,6 +55,8 @@ struct AudioTrack {
 	                                    , album(   item.value("album"   ).toString())
 	                                    , title(   item.value("title"   ).toString())
 	{}
+
+	AudioTrack (const QVariant &item): AudioTrack(item.toMap()) {}
 };
 
 
