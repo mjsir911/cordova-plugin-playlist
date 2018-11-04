@@ -39,16 +39,16 @@ int RmxAudioPlayer::setPlaylistItems(int scId, int ecId, const QJSValue &items_t
 int RmxAudioPlayer::addItem(int scId, int ecId, const AudioTrack &track) {
 	if (!m_playlist.addMedia(track.assetUrl)) {
 		this->cb(ecId, m_playlist.errorString());
-		return -1
+		return -1;
 	}
 
 	this->cb(scId, track.assetUrl);
 }
 
-int addAllItems(int scId, int ecId, const QJSValue &tracks) {
+int RmxAudioPlayer::addAllItems(int scId, int ecId, const QJSValue &tracks) {
 	for (const AudioTrack &track : tracks.toVariant().toList()) {
 		if (!this->addItem(scId, ecId, track)) {
-			return -1
+			return -1;
 		}
 	}
 }
