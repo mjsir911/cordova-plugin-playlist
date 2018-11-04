@@ -42,7 +42,8 @@ int RmxAudioPlayer::addItem(int scId, int ecId, const AudioTrack &track) {
 		return -1;
 	}
 
-	this->cb(scId, track.assetUrl);
+	this->cb(scId, track.assetUrl.fileName());
+	return 0;
 }
 
 int RmxAudioPlayer::addAllItems(int scId, int ecId, const QJSValue &tracks) {
