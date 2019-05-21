@@ -95,6 +95,7 @@
 	<platform name="ubuntu">
 			<header-file src="src/ubuntu/playlist.h" />
 			<source-file src="src/ubuntu/playlist.cpp" />
+			<header-file src="src/ubuntu/AudioTrack.h" />
 	</platform>
 
 	<!-- ios -->
