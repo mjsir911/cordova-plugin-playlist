@@ -1,6 +1,8 @@
 #ifndef LOCK_AUDIOTRACK_H
 #define LOCK_AUDIOTRACK_H
 
+#include <QJSValue>
+#include <QList>
 #include <QString>
 
 struct AudioTrack {
@@ -56,8 +58,10 @@ struct AudioTrack {
 	                                    , title(   item.value("title"   ).toString())
 	{}
 
-	AudioTrack (const QVariant &item): AudioTrack(item.toMap()) {}
+	AudioTrack (const QVariant  item): AudioTrack(item.toMap()) {}
+	AudioTrack (const QJSValue  item): AudioTrack(item.toVariant()) {}
 };
 
+typedef QList<AudioTrack> AudioTrackList;
 
 #endif
